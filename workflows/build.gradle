@@ -5,6 +5,7 @@ repositories {
     maven { url 'https://jitpack.io' }
     maven { url 'https://ci-artifactory.corda.r3cev.com/artifactory/corda' }
     maven { url 'https://repo.gradle.org/gradle/libs-releases' }
+    maven { url "https://ci-artifactory.corda.r3cev.com/artifactory/corda-lib" }
 }
 
 apply plugin: 'kotlin'
@@ -21,6 +22,13 @@ dependencies {
     implementation "$junit_group:junit-jupiter-engine:$junit_version"
     implementation "$junit_group:junit-jupiter-api:$junit_version"
     implementation "$kotlin_group:kotlin-test:$kotlin_version"
+
+    implementation project(":contracts")
+
+    // Cordapp dependencies
+    implementation "com.r3.corda.lib.tokens:tokens-workflows:1.0"
+    implementation "com.r3.corda.lib.tokens:tokens-money:1.0"
+    implementation "com.r3.corda.lib.tokens:tokens-contracts:1.0"
 }
 
 jar { exclude '**/log4j2*.xml' }
