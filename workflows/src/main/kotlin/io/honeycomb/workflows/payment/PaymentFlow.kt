@@ -1,4 +1,4 @@
-package io.honeycomb.workflows
+package io.honeycomb.workflows.payment
 
 import co.paralleluniverse.fibers.Suspendable
 import com.r3.corda.lib.tokens.contracts.states.FungibleToken
