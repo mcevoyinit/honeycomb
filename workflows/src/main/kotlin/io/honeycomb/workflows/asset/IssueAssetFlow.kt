@@ -4,23 +4,25 @@ import co.paralleluniverse.fibers.Suspendable
 import io.honeycomb.contracts.asset.AssetContract
 import io.honeycomb.contracts.asset.AssetState
 import io.honeycomb.contracts.asset.LockStatus
-import io.honeycomb.contracts.payment.ReceiptContract
 import net.corda.core.contracts.UniqueIdentifier
 import net.corda.core.flows.*
 import net.corda.core.identity.Party
-import net.corda.core.node.services.queryBy
 import net.corda.core.transactions.SignedTransaction
 import net.corda.core.transactions.TransactionBuilder
 import net.corda.core.utilities.ProgressTracker
 import java.time.Instant
 
+/*
+ Simple Flow to issue tokens to yourself in order to bootstapper the nodes to a state where we can begin asset lock based trading
+ */
+
 @InitiatingFlow
 @StartableByRPC
-class LockAssetFlow(val name : String,
-                    val newOwner : Party,
-                    val expiryTime : Long,
-                    val offset : Long,
-                    val reference : UniqueIdentifier) : FlowLogic<SignedTransaction>() {
+class IssueAssetFlow(val name : String,
+                     val value: Long,
+                     val receiver: Party,
+                     val timeLockInSeconds : Long,
+                     val offset : Long) : FlowLogic<SignedTransaction>() {
 
     @Suppress("ClassName")
     companion object {
@@ -37,28 +39,29 @@ class LockAssetFlow(val name : String,
 
     @Suspendable
     override fun call(): SignedTransaction {
-        val input = serviceHub.vaultService.queryBy<AssetState>().states.first { it.state.data.name == name }
-        val notary = serviceHub.networkMapCache.notaryIdentities.first()
-        val lockCommand = AssetContract.Commands.Lock()
-        val receiptCommand = ReceiptContract.Commands.Claim()
 
-        val output =  input.state.data.copy(
+        val command = AssetContract.Commands.Issue()
+
+        val notary = serviceHub.networkMapCache.notaryIdentities.first()
+
+        val assetState =  AssetState(
+            name = name,
             owner = ourIdentity,
-            counterparties = listOf(newOwner).toMutableList(),
-            status = LockStatus.LOCKED,
-            newOwner = newOwner,
-            expiryDate = Instant.now().plusSeconds(expiryTime),
+            newOwner = ourIdentity,
+            counterparties = emptyList<Party>().toMutableList(),
+            status = LockStatus.UNLOCKED,
+            value = value,
+            reference = UniqueIdentifier.fromString("ASSET1"),
+            expiryDate = Instant.now().plusSeconds(timeLockInSeconds), // on issue this doesn't matter
             offset = offset,
-            reference = reference
-        )
+            participants = listOf(ourIdentity))
 
         // Build transaction
         val txBuilder = with(TransactionBuilder(notary)) {
-            addInputState(input)
-            addOutputState(output)
-            addCommand(lockCommand, ourIdentity.owningKey)
-            addCommand(receiptCommand, ourIdentity.owningKey)
+            addOutputState(assetState)
+            addCommand(command, ourIdentity.owningKey)
         }
+
         // verify
         txBuilder.verify(serviceHub)
 
@@ -68,13 +71,7 @@ class LockAssetFlow(val name : String,
         // Finalise
         return subFlow((FinalityFlow(pstx, emptyList())))
     }
+}
 
 
-}
-@InitiatedBy(LockAssetFlow::class)
-open class LockAssetFlowResponder(private val otherPartySession: FlowSession) : FlowLogic<SignedTransaction>() {
-    @Suspendable
-    override fun call(): SignedTransaction {
-        return subFlow(ReceiveFinalityFlow(otherPartySession))
-    }
-}
+

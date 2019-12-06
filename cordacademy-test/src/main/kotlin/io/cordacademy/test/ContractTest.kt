@@ -47,9 +47,7 @@ abstract class ContractTest(
      */
     override fun close() = finalize()
 
-    /**
-     * Provides post startup test initialization.
-     */
+    /** Provides post startup test initialization */
     protected open fun initialize() = Unit
 
     /**

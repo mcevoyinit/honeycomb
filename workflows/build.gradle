@@ -25,10 +25,9 @@ dependencies {
 
     implementation project(":contracts")
 
-    // Cordapp dependencies
-    implementation "com.r3.corda.lib.tokens:tokens-workflows:1.0"
-    implementation "com.r3.corda.lib.tokens:tokens-money:1.0"
-    implementation "com.r3.corda.lib.tokens:tokens-contracts:1.0"
+    cordapp "com.r3.corda.lib.tokens:tokens-contracts:1.0"
+    cordapp "com.r3.corda.lib.tokens:tokens-workflows:1.0"
+    cordapp "com.r3.corda.lib.tokens:tokens-money:1.0"
 }
 
 jar { exclude '**/log4j2*.xml' }

@@ -9,13 +9,15 @@ import net.corda.core.serialization.CordaSerializable
 import java.time.Instant
 
 @BelongsToContract(AssetContract::class)
-data class AssetState(val owner: Party,
+data class AssetState(val name : String,
+                      val owner: Party,
+                      val newOwner : Party,
                       val counterparties: MutableList<Party>,
                       val status : LockStatus,
-                      val amount: Long,
+                      val value: Long, // amount of currency i.e 50 $
                       val reference: UniqueIdentifier,
                       val expiryDate : Instant,
-                      val offset : Instant,
+                      val offset : Long,
                       override val participants: List<AbstractParty> = counterparties + owner) : ContractState
 
 @CordaSerializable

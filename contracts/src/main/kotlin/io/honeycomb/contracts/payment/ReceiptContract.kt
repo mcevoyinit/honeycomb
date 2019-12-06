@@ -40,5 +40,6 @@ open class ReceiptContract : Contract {
 
     open fun verifyClaim(tx: LedgerTransaction, command: CommandWithParties<Commands>) = requireThat {
 
+        // receipt == asset unlocked
     }
 }
