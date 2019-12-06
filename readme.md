@@ -1,4 +1,4 @@
-![honeycomb-logo](https://user-images.githubusercontent.com/40205361/70325321-a178dd80-1829-11ea-8d77-aaafd69aff00.jpg)
+![honeycomb-png-transparent-clipart-freeuse](https://user-images.githubusercontent.com/40205361/70325973-3e884600-182b-11ea-9977-692f9bc1dbfd.png)
 
 
 
