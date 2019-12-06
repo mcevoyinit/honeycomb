@@ -46,8 +46,8 @@ class IssueTokensFlow(val amount: Long,
         val currencyTokenType = FiatCurrency.getInstance(currency)
         val amountOfTarget = amount of currencyTokenType
 
-        val tokenToIssue = amountOfTarget issuedBy ourIdentity heldBy ourIdentity
-        return subFlow(IssueTokens(tokensToIssue = listOf(tokenToIssue), observers = listOf(ourIdentity)))
+        val tokenToIssue = amountOfTarget issuedBy ourIdentity heldBy receiver
+        return subFlow(IssueTokens(tokensToIssue = listOf(tokenToIssue), observers = emptyList()))
     }
 
 }

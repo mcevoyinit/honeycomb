@@ -9,7 +9,6 @@ import io.honeycomb.contracts.payment.ReceiptState
 import net.corda.core.contracts.UniqueIdentifier
 import net.corda.core.flows.*
 import net.corda.core.identity.Party
-import net.corda.core.internal.FlowIORequest
 import net.corda.core.node.services.queryBy
 import net.corda.core.transactions.SignedTransaction
 import net.corda.core.transactions.TransactionBuilder
@@ -20,7 +19,7 @@ import java.time.Instant
 @StartableByRPC
 class UnlockAssetFlow(val name : String,
                       val newOwner : Party,
-                      val paymentReference : UniqueIdentifier) : FlowLogic<SignedTransaction>() {
+                      val reference : UniqueIdentifier) : FlowLogic<SignedTransaction>() {
 
     @Suppress("ClassName")
     companion object {
@@ -38,7 +37,7 @@ class UnlockAssetFlow(val name : String,
     @Suspendable
     override fun call(): SignedTransaction {
         val inputAssetState = serviceHub.vaultService.queryBy<AssetState>().states.first { it.state.data.name == name }
-        val receiptState = serviceHub.vaultService.queryBy<ReceiptState>().states.first { it.state.data.reference == paymentReference }
+        val receiptState = serviceHub.vaultService.queryBy<ReceiptState>().states.first { it.state.data.reference == reference }
         val notary = serviceHub.networkMapCache.notaryIdentities.first()
         val lockCommand = AssetContract.Commands.Lock()
         val receiptCommand = ReceiptContract.Commands.Claim()
@@ -50,7 +49,7 @@ class UnlockAssetFlow(val name : String,
             newOwner = ourIdentity,
             expiryDate = Instant.MAX,
             offset = 0L,
-            reference = paymentReference
+            reference = reference
         )
 
         // Build transaction

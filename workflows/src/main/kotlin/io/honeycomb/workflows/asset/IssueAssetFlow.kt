@@ -20,7 +20,6 @@ import java.time.Instant
 @StartableByRPC
 class IssueAssetFlow(val name : String,
                      val value: Long,
-                     val receiver: Party,
                      val timeLockInSeconds : Long,
                      val offset : Long) : FlowLogic<SignedTransaction>() {
 
