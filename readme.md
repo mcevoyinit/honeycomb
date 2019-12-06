@@ -1,4 +1,4 @@
-![Cordacademy logo](https://raw.githubusercontent.com/cordacademy/cordacademy.github.io/master/content/images/logo-combined.png)
+![honeycomb-logo](https://user-images.githubusercontent.com/40205361/70325321-a178dd80-1829-11ea-8d77-aaafd69aff00.jpg)
 
 
 
