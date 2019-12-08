@@ -28,7 +28,7 @@ Here we can see the 3 step process in performing an atomic exchange or asset and
 
 1. `LockAssetTransaction` - the asset owner or seller locks the asset by consuming it an transforming to status LOCKED while marking all the information needed for the buyer to provide valid payment and claim the asset for their own
 2. `PaymentTransaction` - the transfer to cash tokens from  buyer to seller and the creation of a receipt state that contractually matches the value of tokens transferred,  to whom and from whom. This receipt is used to the subequent transaction to claim ownership of the asset
-3. `UnlockAssetTransaction` - now the receipt can be spend by the buyer to claim ownership of the asset. This involves changing the lock status to unlocked and chaning the owner identity to be the buyers.
+3. `UnlockAssetTransaction` - now the receipt can be spent by the buyer to claim ownership of the asset. This involves changing the lock status to unlocked and chaning the owner identity to be the buyers.
 
 ![image](https://user-images.githubusercontent.com/40205361/70395623-6bd61f00-19f8-11ea-9779-960e489be7f8.png)
 
