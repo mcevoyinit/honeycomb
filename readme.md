@@ -1,18 +1,10 @@
 ![honeycomb-png-transparent-clipart-freeuse](https://user-images.githubusercontent.com/40205361/70325973-3e884600-182b-11ea-9977-692f9bc1dbfd.png)
 
-
+# Honeycomb Exchange CorDapp
 
 1. [Introduction](#introduction)
+2. [CorDapp Design](#CorDapp-Design)
 2. [Quick Start Guide](#quick-start-guide)
-3. [Running The Web Server](#running-the-web-server)
-4. [Configuring Your CorDapp](#configuring-your-cordapp)
-5. [Testing Your CorDapp](#testing-your-cordapp)
-6. [Getting Template Updates](#getting-template-updates)
-7. [Known Problems](#known-problems)
-8. [Contribution](#contribution)
-
-
-# Honeycomb Exchange CorDapp
 
 # Introduction
 
@@ -28,7 +20,7 @@ This CorDapp contains a series of flows and contracts including a transaction me
         
    - Enable fully Decentralised P2P Trading with privacy by taking advatage of the token receipt pattern
       
-#Cordapp Design 
+# Cordapp Design 
 
 This is the CorDapp design diagram mapped our using Corda Design Language. 
 
@@ -50,5 +42,16 @@ cd Honeycomb
 ./gradlew deployNodes
 ./build/nodes/runnodes
 ```
+
+# Contribute
+
+Feel free contribute! Some things that would be useful
+
+- Increase "pluggability" - how do we allow arbitrary assets to use these flows and not just `AssetStates`
+- Introduce flows for the seller to unfreeze the asset after expiry date has passed and prospective buyer has not paid
+- Building a decentralised order book to allow matching
+- Think about more complex asset locks with derivatives evolving the lock over time
+- Flow and contract testing
+
 
 
