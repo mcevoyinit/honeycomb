@@ -1,6 +1,7 @@
 package io.honeycomb.contracts.payment
 
 import com.r3.corda.lib.tokens.contracts.states.FungibleToken
+import io.honeycomb.contracts.asset.AssetState
 import net.corda.core.contracts.CommandData
 import net.corda.core.contracts.CommandWithParties
 import net.corda.core.contracts.Contract
@@ -27,7 +28,6 @@ open class ReceiptContract : Contract {
     }
 
     open fun verifyPayment(tx: LedgerTransaction, command: CommandWithParties<Commands>) = requireThat {
-
         // Tokens
         val inputTokens = tx.inputsOfType<FungibleToken>()
         val outputTokens = tx.outputsOfType<FungibleToken>()
@@ -39,7 +39,13 @@ open class ReceiptContract : Contract {
     }
 
     open fun verifyClaim(tx: LedgerTransaction, command: CommandWithParties<Commands>) = requireThat {
+        // Receipt can only be claimed for the amount it is worth and the against an asset with matching reference
+        val receiptState = tx.outputsOfType<ReceiptState>().single()
+        val assetState = tx.outputsOfType<AssetState>().single()
 
-        // receipt == asset unlocked
+        "Receipt reference must match that of the asset" using ( assetState.reference == receiptState.reference )
+
+        "Amount paid for asset per receipt must match the assets value" using ( assetState.value == receiptState.amount )
+
     }
 }

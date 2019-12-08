@@ -1,5 +1,5 @@
 rootProject.name = 'Honeycomb'
-include 'cordacademy-webserver'
+include 'client'
 include 'cordacademy-test'
 include 'workflows'
 include 'contracts'
