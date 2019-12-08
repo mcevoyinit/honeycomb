@@ -8,9 +8,9 @@
 
 # Introduction
 
-This CorDapp contains a series of flows and contracts including a transaction mechanism for a multi-asset and multi-instrument DeX. 
+This CorDapp contains a series of flows and contracts useful in the world of Decentralised Exchangess - (DeX)
 
-   - A liquid Secondary Market for currently illiquid or alternative assets e.g. Fine Art, Commercial Real Estate, Shipping, Aviation, Private Placements
+   - A liquid Secondary Market for illiquid or alternative assets e.g. Fine Art, Commercial Real Estate, Shipping, Aviation, Private Placements
    - Transaction mechanism for a multi-asset and multi-instrument DeX
    - Introduce Asset Lock Pattern which addresses
     
