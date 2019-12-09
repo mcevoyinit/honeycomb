@@ -1,11 +1,15 @@
 package io.honeycomb.webserver.areas.assets
 
-data class IsuueAssetInputDto(
+data class IssueAssetInputDto(
     val name: String,
     val value: Long,
     val timeLockInSeconds: Long,
     val offset : Long,
     val reference: String
+)
+
+data class AssetTransactionOutputDto(
+    val transactionId: String
 )
 
 data class LockAssetInputDto(

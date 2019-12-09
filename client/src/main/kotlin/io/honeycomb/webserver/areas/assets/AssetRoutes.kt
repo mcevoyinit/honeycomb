@@ -15,15 +15,9 @@ import net.corda.core.identity.CordaX500Name
 import net.corda.core.messaging.startFlow
 import net.corda.core.utilities.getOrThrow
 import net.corda.core.contracts.UniqueIdentifier
-import io.honeycomb.contracts.asset.AssetState
-import io.ktor.request.receive
-import io.ktor.response.respond
 import io.ktor.routing.*
-import net.corda.core.contracts.Amount
-import net.corda.core.messaging.startTrackedFlow
 import net.corda.core.node.services.Vault
 import net.corda.core.node.services.vault.QueryCriteria
-import net.corda.core.utilities.getOrThrow
 import java.util.*
 
 /**
@@ -55,10 +49,10 @@ fun Route.assetRoutes(rpc: CordaRPCOps) = route("/assets") {
 
     post("/issue") {
         try {
-            val dto = call.receive<IsuueAssetInputDto>()
-            val message = rpc.startFlow(::IssueAssetFlow,
+            val dto = call.receive<IssueAssetInputDto>()
+            val transaction = rpc.startFlow(::IssueAssetFlow,
                 dto.name,dto.value,dto.timeLockInSeconds,dto.offset,UniqueIdentifier(null, UUID.fromString(dto.reference))).returnValue.getOrThrow()
-            call.respond(HttpStatusCode.Created, message)
+            call.respond(AssetTransactionOutputDto(transaction.id.toString()))
         } catch (ex: Exception) {
             call.respond(HttpStatusCode.InternalServerError, mapOf("errorMessage" to ex.message))
         }
