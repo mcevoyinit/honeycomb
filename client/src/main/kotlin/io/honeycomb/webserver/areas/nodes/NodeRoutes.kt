@@ -1,4 +1,4 @@
-package io.cordacademy.webserver.areas.nodes
+package io.honeycomb.webserver.areas.nodes
 
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode

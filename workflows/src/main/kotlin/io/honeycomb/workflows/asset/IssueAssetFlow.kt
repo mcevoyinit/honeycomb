@@ -21,7 +21,8 @@ import java.time.Instant
 class IssueAssetFlow(val name : String,
                      val value: Long,
                      val timeLockInSeconds : Long,
-                     val offset : Long) : FlowLogic<SignedTransaction>() {
+                     val offset : Long,
+                     val reference : UniqueIdentifier) : FlowLogic<SignedTransaction>() {
 
     @Suppress("ClassName")
     companion object {
@@ -50,7 +51,7 @@ class IssueAssetFlow(val name : String,
             counterparties = emptyList<Party>().toMutableList(),
             status = LockStatus.UNLOCKED,
             value = value,
-            reference = UniqueIdentifier.fromString("ASSET1"),
+            reference = reference,
             expiryDate = Instant.now().plusSeconds(timeLockInSeconds), // on issue this doesn't matter
             offset = offset,
             participants = listOf(ourIdentity))

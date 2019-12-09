@@ -1,12 +1,15 @@
-package io.cordacademy.webserver
+package io.honeycomb.webserver
 
 import com.fasterxml.jackson.core.util.DefaultIndenter
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import io.cordacademy.webserver.areas.admin.adminRoutes
-import io.cordacademy.webserver.areas.attachments.attachmentRoutes
-import io.cordacademy.webserver.areas.nodes.nodeRoutes
+import io.honeycomb.webserver.areas.admin.adminRoutes
+import io.honeycomb.webserver.areas.assets.assetRoutes
+import io.honeycomb.webserver.areas.payment.paymentRoutes
+import io.honeycomb.webserver.areas.attachments.attachmentRoutes
+import io.honeycomb.webserver.areas.nodes.nodeRoutes
+import io.honeycomb.webserver.areas.tokens.tokenRoutes
 import io.ktor.application.install
 import io.ktor.features.CallLogging
 import io.ktor.features.Compression
@@ -42,6 +45,9 @@ fun main() {
             adminRoutes(rpcProxy)
             nodeRoutes(rpcProxy)
             attachmentRoutes(rpcProxy)
+            assetRoutes(rpcProxy)
+            paymentRoutes(rpcProxy)
+            tokenRoutes(rpcProxy)
         }
     }.start(wait = true)
 }

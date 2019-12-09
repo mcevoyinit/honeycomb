@@ -1,4 +1,4 @@
-package io.cordacademy.webserver
+package io.honeycomb.webserver
 
 import java.util.*
 
