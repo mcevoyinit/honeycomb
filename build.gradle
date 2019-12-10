@@ -80,7 +80,6 @@ dependencies {
     cordaRuntime "$log4j_group:log4j-slf4j-impl:$log4j_version"
 
     // Test Dependencies
-    testImplementation project(":cordacademy-test")
 
     cordapp "com.r3.corda.lib.tokens:tokens-contracts:1.0"
     cordapp "com.r3.corda.lib.tokens:tokens-workflows:1.0"
