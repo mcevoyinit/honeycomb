@@ -36,15 +36,16 @@ class UnlockAssetFlow(val name : String,
 
     @Suspendable
     override fun call(): SignedTransaction {
-        val inputAssetState = serviceHub.vaultService.queryBy<AssetState>().states.first { it.state.data.name == name }
+        val inputAssetState = serviceHub.vaultService.queryBy<AssetState>().states.first {
+            it.state.data.name == name
+        }
         val receiptState = serviceHub.vaultService.queryBy<ReceiptState>().states.first { it.state.data.reference == reference }
         val notary = serviceHub.networkMapCache.notaryIdentities.first()
-        val lockCommand = AssetContract.Commands.Lock()
+        val lockCommand = AssetContract.Commands.Unlock()
         val receiptCommand = ReceiptContract.Commands.Claim()
 
         val outputAssetState =  inputAssetState.state.data.copy(
             owner = ourIdentity,
-            counterparties = listOf(newOwner).toMutableList(),
             status = LockStatus.UNLOCKED,
             newOwner = ourIdentity,
             expiryDate = Instant.MAX,
@@ -63,11 +64,12 @@ class UnlockAssetFlow(val name : String,
         // verify
         txBuilder.verify(serviceHub)
 
+        val session = initiateFlow(inputAssetState.state.data.owner)
         // sign and gather signatures
         val pstx = serviceHub.signInitialTransaction(txBuilder)
 
         // Finalise
-        return subFlow((FinalityFlow(pstx, emptyList())))
+        return subFlow((FinalityFlow(pstx, listOf(session))))
     }
 }
 @InitiatedBy(UnlockAssetFlow::class)

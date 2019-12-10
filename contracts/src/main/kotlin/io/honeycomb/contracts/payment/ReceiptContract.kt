@@ -40,7 +40,7 @@ open class ReceiptContract : Contract {
 
     open fun verifyClaim(tx: LedgerTransaction, command: CommandWithParties<Commands>) = requireThat {
         // Receipt can only be claimed for the amount it is worth and the against an asset with matching reference
-        val receiptState = tx.outputsOfType<ReceiptState>().single()
+        val receiptState = tx.inputsOfType<ReceiptState>().single()
         val assetState = tx.outputsOfType<AssetState>().single()
 
         "Receipt reference must match that of the asset" using ( assetState.reference == receiptState.reference )

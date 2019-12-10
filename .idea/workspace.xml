@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d558a0d8-baf7-4c8a-a7d1-c792753ef462" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/kotlin/io/honeycomb/webserver/areas/assets/AssetRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/kotlin/io/honeycomb/webserver/areas/assets/AssetRoutes.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/kotlin/io/honeycomb/contracts/asset/AssetContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/kotlin/io/honeycomb/contracts/asset/AssetContract.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/kotlin/io/honeycomb/contracts/asset/AssetState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/kotlin/io/honeycomb/contracts/asset/AssetState.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/kotlin/io/honeycomb/contracts/payment/ReceiptContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/kotlin/io/honeycomb/contracts/payment/ReceiptContract.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workflows/src/main/kotlin/io/honeycomb/workflows/asset/IssueAssetFlow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/workflows/src/main/kotlin/io/honeycomb/workflows/asset/IssueAssetFlow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workflows/src/main/kotlin/io/honeycomb/workflows/asset/LockAssetFlow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/workflows/src/main/kotlin/io/honeycomb/workflows/asset/LockAssetFlow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workflows/src/main/kotlin/io/honeycomb/workflows/asset/UnlockAssetFlow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/workflows/src/main/kotlin/io/honeycomb/workflows/asset/UnlockAssetFlow.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +56,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -60,7 +72,7 @@
       <recent name="$PROJECT_DIR$/api" />
     </key>
   </component>
-  <component name="RunManager" selected="Compound.Run All WebServers">
+  <component name="RunManager" selected="Kotlin.Run WebServer (Seller)">
     <list>
       <item itemvalue="Compound.Run All WebServers" />
       <item itemvalue="Gradle.Build" />
@@ -95,7 +107,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575851216283</updated>
-      <workItem from="1575974361901" duration="95000" />
+      <workItem from="1575974361901" duration="751000" />
+      <workItem from="1575975378109" duration="5860000" />
     </task>
     <servers />
   </component>
@@ -119,10 +132,15 @@
       <screen x="65" y="22" width="1615" height="1028" />
     </state>
     <state x="576" y="185" key="#Run_WebServer_(Party_C)/65.22.1615.1028@65.22.1615.1028" timestamp="1575894101152" />
-    <state x="337" y="197" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575899649194">
-      <screen x="65" y="22" width="1615" height="1028" />
+    <state x="283" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575976290179">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state x="283" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575976290179" />
     <state x="337" y="197" key="#com.intellij.execution.impl.EditConfigurationsDialog/65.22.1615.1028@65.22.1615.1028" timestamp="1575899649194" />
+    <state x="305" y="335" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1575979796875">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="305" y="335" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1575979796875" />
     <state x="609" y="326" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1575893799301">
       <screen x="65" y="22" width="1615" height="1028" />
     </state>
@@ -131,22 +149,62 @@
       <screen x="65" y="22" width="1615" height="1028" />
     </state>
     <state x="610" y="289" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/65.22.1615.1028@65.22.1615.1028" timestamp="1575899665023" />
-    <state width="1573" height="261" key="GridCell.Tab.0.bottom" timestamp="1575939508029">
-      <screen x="65" y="22" width="1615" height="1028" />
+    <state x="713" y="238" width="691" height="573" key="#xdebugger.evaluate" timestamp="1575988436930">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state x="713" y="238" width="691" height="573" key="#xdebugger.evaluate/0.0.1680.1050@0.0.1680.1050" timestamp="1575988436930" />
+    <state width="1638" height="469" key="GridCell.Tab.0.bottom" timestamp="1575991906545">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="469" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1575991906545" />
+    <state width="1638" height="469" key="GridCell.Tab.0.bottom/48.23.1632.1027@48.23.1632.1027" timestamp="1575991890572" />
     <state width="1573" height="261" key="GridCell.Tab.0.bottom/65.22.1615.1028@65.22.1615.1028" timestamp="1575939508029" />
-    <state width="1573" height="261" key="GridCell.Tab.0.center" timestamp="1575939508028">
-      <screen x="65" y="22" width="1615" height="1028" />
+    <state width="1638" height="469" key="GridCell.Tab.0.center" timestamp="1575991906544">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1638" height="469" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1575991906544" />
+    <state width="1638" height="469" key="GridCell.Tab.0.center/48.23.1632.1027@48.23.1632.1027" timestamp="1575991890570" />
     <state width="1573" height="261" key="GridCell.Tab.0.center/65.22.1615.1028@65.22.1615.1028" timestamp="1575939508028" />
-    <state width="1573" height="261" key="GridCell.Tab.0.left" timestamp="1575939508027">
-      <screen x="65" y="22" width="1615" height="1028" />
+    <state width="1638" height="469" key="GridCell.Tab.0.left" timestamp="1575991906543">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1638" height="469" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1575991906543" />
+    <state width="1638" height="469" key="GridCell.Tab.0.left/48.23.1632.1027@48.23.1632.1027" timestamp="1575991890569" />
     <state width="1573" height="261" key="GridCell.Tab.0.left/65.22.1615.1028@65.22.1615.1028" timestamp="1575939508027" />
-    <state width="1573" height="261" key="GridCell.Tab.0.right" timestamp="1575939508028">
-      <screen x="65" y="22" width="1615" height="1028" />
+    <state width="1638" height="469" key="GridCell.Tab.0.right" timestamp="1575991906544">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1638" height="469" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1575991906544" />
+    <state width="1638" height="469" key="GridCell.Tab.0.right/48.23.1632.1027@48.23.1632.1027" timestamp="1575991890571" />
     <state width="1573" height="261" key="GridCell.Tab.0.right/65.22.1615.1028@65.22.1615.1028" timestamp="1575939508028" />
+    <state width="1638" height="469" key="GridCell.Tab.1.bottom" timestamp="1575991906546">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="469" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1575991906546" />
+    <state width="1638" height="469" key="GridCell.Tab.1.bottom/48.23.1632.1027@48.23.1632.1027" timestamp="1575991890583" />
+    <state width="1638" height="469" key="GridCell.Tab.1.center" timestamp="1575991906546">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="469" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1575991906546" />
+    <state width="1638" height="469" key="GridCell.Tab.1.center/48.23.1632.1027@48.23.1632.1027" timestamp="1575991890573" />
+    <state width="1638" height="469" key="GridCell.Tab.1.left" timestamp="1575991906545">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="469" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1575991906545" />
+    <state width="1638" height="469" key="GridCell.Tab.1.left/48.23.1632.1027@48.23.1632.1027" timestamp="1575991890572" />
+    <state width="1638" height="469" key="GridCell.Tab.1.right" timestamp="1575991906546">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="469" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1575991906546" />
+    <state width="1638" height="469" key="GridCell.Tab.1.right/48.23.1632.1027@48.23.1632.1027" timestamp="1575991890583" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1575991142070">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="500" height="445" key="SwitcherDM/0.0.1680.1050@0.0.1680.1050" timestamp="1575991142070" />
+    <state x="503" y="294" width="673" height="462" key="find.popup" timestamp="1575994918956">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="503" y="294" width="673" height="462" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1575994918956" />
     <state width="600" height="440" key="javadoc.popup" timestamp="1575938106199">
       <screen x="65" y="22" width="1615" height="1028" />
     </state>
@@ -155,5 +213,52 @@
       <screen x="65" y="22" width="1615" height="1028" />
     </state>
     <state x="266" y="262" key="new project wizard/65.22.1615.1028@65.22.1615.1028" timestamp="1575851323006" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1575990702479">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1575990702479" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/48.23.1632.1027@48.23.1632.1027" timestamp="1575989779000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/workflows/src/main/kotlin/io/honeycomb/workflows/asset/LockAssetFlow.kt</url>
+          <line>44</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/workflows/src/main/kotlin/io/honeycomb/workflows/asset/LockAssetFlow.kt</url>
+          <line>57</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/workflows/src/main/kotlin/io/honeycomb/workflows/asset/LockAssetFlow.kt</url>
+          <line>39</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/workflows/src/main/kotlin/io/honeycomb/workflows/asset/LockAssetFlow.kt</url>
+          <line>58</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/workflows/src/main/kotlin/io/honeycomb/workflows/asset/UnlockAssetFlow.kt</url>
+          <line>38</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/workflows/src/main/kotlin/io/honeycomb/workflows/asset/UnlockAssetFlow.kt</url>
+          <line>41</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

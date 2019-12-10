@@ -41,7 +41,7 @@ open class AssetContract: Contract {
 
     open fun verifyUnlock(tx: LedgerTransaction, command: CommandWithParties<Commands>) = requireThat {
         val assetState = tx.outputsOfType<AssetState>().single()
-        val receiptState = tx.outputsOfType<ReceiptState>().single()
+        val receiptState = tx.inputsOfType<ReceiptState>().single()
 
         "Status must be changed to UNLOCKED" using ( assetState.status == LockStatus.UNLOCKED )
 

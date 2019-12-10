@@ -44,12 +44,12 @@ class LockAssetFlow(val name : String,
 
         val output =  input.state.data.copy(
             owner = ourIdentity,
-            counterparties = listOf(newOwner).toMutableList(),
             status = LockStatus.LOCKED,
             newOwner = newOwner,
             expiryDate = Instant.now().plusSeconds(expiryTime),
             offset = offset,
-            reference = reference
+            reference = reference,
+            participants = listOf(ourIdentity, newOwner)
         )
 
         // Build transaction
@@ -62,13 +62,14 @@ class LockAssetFlow(val name : String,
         // verify
         txBuilder.verify(serviceHub)
 
+        val session = initiateFlow(newOwner)
+
         // sign and gather signatures
         val pstx = serviceHub.signInitialTransaction(txBuilder)
 
         // Finalise
-        return subFlow((FinalityFlow(pstx, emptyList())))
+        return subFlow((FinalityFlow(pstx, listOf(session))))
     }
-
 
 }
 @InitiatedBy(LockAssetFlow::class)

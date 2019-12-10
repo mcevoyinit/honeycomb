@@ -12,13 +12,12 @@ import java.time.Instant
 data class AssetState(val name : String,
                       val owner: Party,
                       val newOwner : Party,
-                      val counterparties: MutableList<Party>,
                       val status : LockStatus,
                       val value: Long, // amount of currency i.e 50 $
                       val reference: UniqueIdentifier,
                       val expiryDate : Instant,
                       val offset : Long,
-                      override val participants: List<AbstractParty> = counterparties + owner) : ContractState
+                      override val participants: List<AbstractParty> = listOf(newOwner, owner)) : ContractState
 
 @CordaSerializable
 enum class LockStatus { LOCKED, UNLOCKED }

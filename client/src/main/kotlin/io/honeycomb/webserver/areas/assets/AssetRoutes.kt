@@ -65,7 +65,11 @@ fun Route.assetRoutes(rpc: CordaRPCOps) = route("/assets") {
             val dto = call.receive<LockAssetInputDto>()
             val newOwner = rpc.wellKnownPartyFromX500Name(CordaX500Name.parse(dto.newOwner!!))!!
             val transaction = rpc.startFlow(::LockAssetFlow,
-                dto.name,newOwner,dto.expiryTime,dto.offset,UniqueIdentifier(null, UUID.fromString(dto.reference))).returnValue.getOrThrow()
+                dto.name,
+                newOwner,
+                dto.expiryTime,
+                dto.offset,
+                UniqueIdentifier(null, UUID.fromString(dto.reference))).returnValue.getOrThrow()
             call.respond(LockTransactionOutputDto(transaction.id.toString()))
         } catch (ex: Exception) {
             call.respond(HttpStatusCode.InternalServerError, mapOf("errorMessage" to ex.message))
