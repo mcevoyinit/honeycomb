@@ -1,4 +1,4 @@
-package io.cordacademy.webserver.areas.attachments
+package io.honeycomb.webserver.areas.attachments
 
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode

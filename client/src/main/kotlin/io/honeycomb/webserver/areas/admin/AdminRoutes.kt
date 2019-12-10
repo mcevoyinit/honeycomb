@@ -1,4 +1,4 @@
-package io.cordacademy.webserver.areas.admin
+package io.honeycomb.webserver.areas.admin
 
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
