@@ -1,5 +1,6 @@
 package io.honeycomb.webserver.areas.assets
 
+import io.honeycomb.contracts.asset.AssetState
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
 import io.ktor.request.receive
@@ -19,6 +20,7 @@ import io.ktor.routing.*
 import net.corda.core.node.services.Vault
 import net.corda.core.node.services.vault.QueryCriteria
 import java.util.*
+import io.honeycomb.webserver.toDto
 
 /**
  * Defines the routes routes for the web server.
@@ -39,12 +41,12 @@ fun Route.assetRoutes(rpc: CordaRPCOps) = route("/assets") {
             QueryCriteria.VaultQueryCriteria()
         }
 
-        //val assets = rpc
-        //    .vaultQueryByCriteria(criteria, AssetState::class.java)
-        //    .states
-           // .map { it.state.data.toDto() }
+        val assets = rpc
+           .vaultQueryByCriteria(criteria, AssetState::class.java)
+            .states
+            .map { it.state.data.toDto() }
 
-        //call.respond(mapOf("assets" to assets))
+        call.respond(mapOf("assets" to assets))
     }
 
     post("/issue") {
@@ -62,9 +64,9 @@ fun Route.assetRoutes(rpc: CordaRPCOps) = route("/assets") {
         try {
             val dto = call.receive<LockAssetInputDto>()
             val newOwner = rpc.wellKnownPartyFromX500Name(CordaX500Name.parse(dto.newOwner!!))!!
-            val message = rpc.startFlow(::LockAssetFlow,
+            val transaction = rpc.startFlow(::LockAssetFlow,
                 dto.name,newOwner,dto.expiryTime,dto.offset,UniqueIdentifier(null, UUID.fromString(dto.reference))).returnValue.getOrThrow()
-            call.respond(HttpStatusCode.Created, message)
+            call.respond(LockTransactionOutputDto(transaction.id.toString()))
         } catch (ex: Exception) {
             call.respond(HttpStatusCode.InternalServerError, mapOf("errorMessage" to ex.message))
         }
@@ -74,9 +76,9 @@ fun Route.assetRoutes(rpc: CordaRPCOps) = route("/assets") {
         try {
             val dto = call.receive<UnlockAssetInputDto>()
             val newOwner = rpc.wellKnownPartyFromX500Name(CordaX500Name.parse(dto.newOwner!!))!!
-            val message = rpc.startFlow(::UnlockAssetFlow,
+            val transaction = rpc.startFlow(::UnlockAssetFlow,
                 dto.name,newOwner,UniqueIdentifier(null, UUID.fromString(dto.reference))).returnValue.getOrThrow()
-            call.respond(HttpStatusCode.Created, message)
+            call.respond(UnlockTransactionOutputDto(transaction.id.toString()))
         } catch (ex: Exception) {
             call.respond(HttpStatusCode.InternalServerError, mapOf("errorMessage" to ex.message))
         }

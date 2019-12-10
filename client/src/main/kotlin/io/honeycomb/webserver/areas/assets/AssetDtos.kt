@@ -8,6 +8,17 @@ data class IssueAssetInputDto(
     val reference: String
 )
 
+data class AssetOutputDto(
+    val name: String,
+    val owner: String,
+    val newOwner: String,
+    val status: String,
+    val value: Long,
+    val reference: String,
+    val expiryDate: Long,
+    val offset : Long
+)
+
 data class AssetTransactionOutputDto(
     val transactionId: String
 )
@@ -20,8 +31,16 @@ data class LockAssetInputDto(
     val reference: String
 )
 
+data class LockTransactionOutputDto(
+    val transactionId: String
+)
+
 data class UnlockAssetInputDto(
     val name: String,
     val newOwner: String,
     val reference: String
+)
+
+data class UnlockTransactionOutputDto(
+    val transactionId: String
 )

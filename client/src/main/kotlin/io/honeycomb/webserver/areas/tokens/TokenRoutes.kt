@@ -1,5 +1,6 @@
 package io.honeycomb.webserver.areas.tokens
 
+import io.honeycomb.webserver.areas.assets.AssetTransactionOutputDto
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
 import io.ktor.request.receive
@@ -19,9 +20,9 @@ fun Route.tokenRoutes(rpc: CordaRPCOps) = route("/token") {
         try {
             val dto = call.receive<IssueTokensInputDto>()
             val receiver = rpc.wellKnownPartyFromX500Name(CordaX500Name.parse(dto.receiver!!))!!
-            val message = rpc.startFlow(::IssueTokensFlow,
+            val transaction = rpc.startFlow(::IssueTokensFlow,
                 dto.amount,dto.currency,receiver).returnValue.getOrThrow()
-            call.respond(HttpStatusCode.Created, message)
+            call.respond(TokenTransactionOutputDto(transaction.id.toString()))
         } catch (ex: Exception) {
             call.respond(HttpStatusCode.InternalServerError, mapOf("errorMessage" to ex.message))
         }
