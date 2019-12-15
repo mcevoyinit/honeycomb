@@ -1,6 +1,6 @@
 ![honeycomb-png-transparent-clipart-freeuse](https://user-images.githubusercontent.com/40205361/70325973-3e884600-182b-11ea-9977-692f9bc1dbfd.png)
 
-# Honeycomb Exchange CorDapp
+# Honeycomb CorDapp
 
 1. [Introduction](#introduction)
 2. [CorDapp Design](#CorDapp-Design)
@@ -10,10 +10,9 @@
 
 This CorDapp contains a series of flows and contracts useful in the world of Decentralised Exchangess - (DeX)
 
-   - A liquid Secondary Market for illiquid or alternative assets e.g. Fine Art, Commercial Real Estate, Shipping, Aviation, Private Placements
    - Transaction mechanism for a multi-asset and multi-instrument DeX
    - Introduce Asset Lock Pattern which addresses
-    
+   
         - Settlement Risk
         - Credit Risk 
         - Fat Finger errors
@@ -24,11 +23,11 @@ This CorDapp contains a series of flows and contracts useful in the world of Dec
 
 This is the CorDapp design diagram mapped our using Corda Design Language. 
 
-Here we can see the 3 step process in performing an atomic exchange or asset and on-ledger cash tokens in a way to preserves transactional privacy downstream.
+Here we can see the 3 step process in performing an atomic exchange of an asset and on-ledger cash tokens in a way that preserves transactional privacy, downstream.
 
-1. `LockAssetTransaction` - the asset owner or seller locks the asset by consuming it an transforming to status LOCKED while marking all the information needed for the buyer to provide valid payment and claim the asset for their own
-2. `PaymentTransaction` - the transfer to cash tokens from  buyer to seller and the creation of a receipt state that contractually matches the value of tokens transferred,  to whom and from whom. This receipt is used to the subequent transaction to claim ownership of the asset
-3. `UnlockAssetTransaction` - now the receipt can be spent by the buyer to claim ownership of the asset. This involves changing the lock status to unlocked and chaning the owner identity to be the buyers.
+1. `LockAssetTransaction` - the asset owner or seller locks the asset by consuming it and transforming it to status LOCKED while marking all the information needed for the buyer to provide valid payment and claim the asset for their own
+2. `PaymentTransaction` - the transfer to cash tokens from  buyer to seller and the creation of a receipt state that contractually matches the value of tokens transferred whille marking to whom and from whom. This receipt is used in the subequent transaction to claim ownership of the asset
+3. `UnlockAssetTransaction` - now the receipt can be spent by the buyer to claim ownership of the asset. This involves changing the lock status to UNLOCKED and changing the owner identity to be the buyers.
 
 ![image](https://user-images.githubusercontent.com/40205361/70395623-6bd61f00-19f8-11ea-9779-960e489be7f8.png)
 
