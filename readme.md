@@ -44,7 +44,7 @@ cd Honeycomb
 
 # Contribute
 
-Feel free contribute! Some things that would be useful
+Feel free to contribute! Some things that would be useful
 
 - Increase "pluggability" - how do we allow arbitrary assets to use these flows and not just `AssetStates`
 - Introduce flows for the seller to unfreeze the asset after expiry date has passed and prospective buyer has not paid
