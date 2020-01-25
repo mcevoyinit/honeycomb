@@ -8,7 +8,7 @@
 
 # Introduction
 
-This CorDapp contains a series of flows and contracts useful in the world of Decentralised Exchangess - (DeX)
+This CorDapp contains a series of flows and contracts useful in the world of Decentralised Exchanges - (DeX)
 
    - Transaction mechanism for a multi-asset and multi-instrument DeX
    - Introduce Asset Lock Pattern which addresses
@@ -40,6 +40,7 @@ If you're continuing from the terminal, you can go ahead and build some nodes.
 cd Honeycomb
 ./gradlew deployNodes
 ./build/nodes/runnodes
+
 ```
 
 # Contribute
